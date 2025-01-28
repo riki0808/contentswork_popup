@@ -135,6 +135,8 @@ const greeting = (name) => {
   return `Hello, ${name}!`;
 }
 
+const fpId = new BrowserFingerprint();
+
 const getFP = () => {
   return new BrowserFingerprint();
 }
