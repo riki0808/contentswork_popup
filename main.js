@@ -130,3 +130,37 @@ class BrowserFingerprint {
     });
   }
 }
+
+const greeting = (name) => {
+  return `Hello, ${name}!`;
+}
+
+
+
+
+  // const popup = document.getElementById('popup');
+  // if (popup) {
+  // const interval = setInterval(() => {
+  //   clearInterval(interval);
+  //   const fingerprinter = new BrowserFingerprint();
+  //   fingerprinter.generateFingerprint()
+  //   .then(fingerprint => {
+  //     popup.contentWindow.postMessage(fingerprint, 'https://contentswork.jp');
+  //   });
+  //   }, 8000);
+  // }
+  // const allowedOrigins = ['http://localhost:3004', 'https://contentswork.jp'];
+  // window.addEventListener('message', function(event) {
+  //   if (allowedOrigins.includes(event.origin) && event.source === popup.contentWindow) {
+  //     const receivedData = event.data;
+  //     const popupFrame = document.getElementById('popupFrame');
+  //     if (!receivedData.isOpen) {
+  //       popupFrame.style.transform = 'translateX(100%)';
+  //       popupFrame.style.opacity = '0';
+  //     } else if (receivedData.isOpen) {
+  //       popupFrame.style.transform = 'translateX(0)';
+  //       popupFrame.style.opacity = '1';
+  //       popupFrame.style.height = receivedData.popupHeight + 'px';
+  //     }
+  //   }
+  // }, false);
