@@ -136,14 +136,14 @@ const popup = document.getElementById('popup');
 console.log('popup', popup);
 
 if (popup) {
-const interval = setInterval(() => {
-  clearInterval(interval);
-  const fingerprinter = new BrowserFingerprint();
-  fingerprinter.generateFingerprint()
-  .then(fingerprint => {
-    console.log('fingerprint', fingerprint);
-    popup.contentWindow.postMessage(fingerprint, 'https://contentswork.jp');
-  });
+  const interval = setInterval(() => {
+    clearInterval(interval);
+    const fingerprinter = new BrowserFingerprint();
+    fingerprinter.generateFingerprint()
+    .then(fingerprint => {
+      console.log('fingerprint', fingerprint);
+      popup.contentWindow.postMessage(fingerprint, 'https://contentswork.jp');
+    });
   }, 8000);
 }
 
