@@ -135,7 +135,10 @@ const greeting = (name) => {
   return `Hello, ${name}!`;
 }
 
-const fingerprinter = new BrowserFingerprint();
+const getFP = () => {
+  return new BrowserFingerprint();
+}
+
 
 
   // const popup = document.getElementById('popup');
