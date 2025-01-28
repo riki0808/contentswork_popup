@@ -146,6 +146,8 @@ if (popup) {
     });
   }, 8000);
 
+  console.log('8秒たった？')
+
   const allowedOrigins = ['http://localhost:3004', 'https://contentswork.jp'];
   window.addEventListener('message', function(event) {
     console.log('event', event);
@@ -169,6 +171,6 @@ if (popup) {
       }
     }
   }, false);
-  
+
 }
 
