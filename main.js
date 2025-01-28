@@ -150,9 +150,7 @@ if (popup) {
     window.addEventListener('message', function(event) {
       console.log('EMBED: event', event);
       console.log('EMBED: event.origin', event.origin);
-      console.log('EMBED: event.source', event.source);
-      console.log('EMBED: event.contentWindow', event.contentWindow);
-      if (allowedOrigins.includes(event.origin) && event.source === popup.contentWindow) {
+      if (allowedOrigins.includes(event.origin)) {
         const receivedData = event.data;
         console.log('EMBED: receivedData', receivedData);
         const popupFrame = document.getElementById('popupFrame');
