@@ -144,33 +144,34 @@ if (popup) {
       console.log('fingerprint', fingerprint);
       popup.contentWindow.postMessage(fingerprint, 'https://contentswork.jp');
     });
+    console.log('8秒たった？')
+  
+    const allowedOrigins = ['http://localhost:3004', 'https://contentswork.jp'];
+    window.addEventListener('message', function(event) {
+      console.log('event', event);
+      console.log('event.origin', event.origin);
+      console.log('event.source', event.source);
+      console.log('event.contentWindow', event.contentWindow);
+      if (allowedOrigins.includes(event.origin) && event.source === popup.contentWindow) {
+        const receivedData = event.data;
+        console.log('receivedData', receivedData);
+        const popupFrame = document.getElementById('popupFrame');
+        console.log('popupFrame', popupFrame);
+        if (!receivedData.isOpen) {
+          console.log('close');
+          popupFrame.style.transform = 'translateX(100%)';
+          popupFrame.style.opacity = '0';
+        } else if (receivedData.isOpen) {
+          console.log('open');
+          popupFrame.style.transform = 'translateX(0)';
+          popupFrame.style.opacity = '1';
+          popupFrame.style.height = receivedData.popupHeight + 'px';
+        }
+      }
+    }, false);
+    
   }, 8000);
 
-  console.log('8秒たった？')
-
-  const allowedOrigins = ['http://localhost:3004', 'https://contentswork.jp'];
-  window.addEventListener('message', function(event) {
-    console.log('event', event);
-    console.log('event.origin', event.origin);
-    console.log('event.source', event.source);
-    console.log('event.contentWindow', event.contentWindow);
-    if (allowedOrigins.includes(event.origin) && event.source === popup.contentWindow) {
-      const receivedData = event.data;
-      console.log('receivedData', receivedData);
-      const popupFrame = document.getElementById('popupFrame');
-      console.log('popupFrame', popupFrame);
-      if (!receivedData.isOpen) {
-        console.log('close');
-        popupFrame.style.transform = 'translateX(100%)';
-        popupFrame.style.opacity = '0';
-      } else if (receivedData.isOpen) {
-        console.log('open');
-        popupFrame.style.transform = 'translateX(0)';
-        popupFrame.style.opacity = '1';
-        popupFrame.style.height = receivedData.popupHeight + 'px';
-      }
-    }
-  }, false);
 
 }
 
